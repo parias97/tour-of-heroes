@@ -13,6 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddHeroDialogComponent } from './components/add-hero-dialog/add-hero-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditHeroDialogComponent } from './components/edit-hero-dialog/edit-hero-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    AddHeroDialogComponent,
+    EditHeroDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -73,6 +73,18 @@ input {
   background-color: #42545C;
 }
 
+button {
+  margin-top: 20px;
+  margin-right: .5rem;
+  background-color: #eee;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+
 button.delete {
   position: absolute;
   left: 210px;
