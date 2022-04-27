@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HeroService } from '../../services/hero.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditHeroDialogComponent } from '../edit-hero-dialog/edit-hero-dialog.component';
 
 @Component({
   selector: 'app-hero-detail',
@@ -17,10 +19,15 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
+    this.getHeroDetails();
+  }
+
+  getHeroDetails(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
@@ -36,4 +43,8 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 
+  editHero(): void {
+    const dialogRef = this.dialog.open(EditHeroDialogComponent, { data: this.hero });
+    dialogRef.afterClosed().subscribe(() => this.getHeroDetails());
+  }
 }

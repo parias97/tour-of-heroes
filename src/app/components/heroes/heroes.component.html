@@ -1,23 +1,20 @@
 <h2>My Heroes</h2>
-<div>
-  <form [formGroup]="newHeroForm" (ngSubmit)="onSubmit()">
-    <label for="new-hero-name">Hero name: </label>
-    <input id="new-hero-name" formControlName="newHeroName" required />
-    <label for="new-hero-power">Hero power: </label>
-    <input id="new-hero-power" formControlName="newHeroPower" required />
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button type="submit" [disabled]="!newHeroForm.valid" class="add-button">
-      Add hero
-    </button>
-  </form>
-</div>
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-      </a>
-      <button type="button" class="delete" title="delete hero"
-  (click)="delete(hero)">x</button>
+    <a routerLink="/detail/{{ hero.id }}">
+      <span class="badge">{{ hero.id }}</span>
+      <span class="name">{{ hero.name }}</span>
+    </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete hero"
+      (click)="delete(hero)"
+    >
+      x
+    </button>
   </li>
+  <!-- TODO: add a button to open dialog to add hero -->
+  <button mat-raised-button (click)="openNewHeroDialog()">Add a New Hero</button>
+
 </ul>
